@@ -9,6 +9,11 @@
 {{ greetings.upper }}
 <br>
 {{ phrase.title }}
+<br>
+{% for d in data %}
+{{ d.name }}
+{{ d.price }}
+{% endfor %}
 
 </body>
 </html>
