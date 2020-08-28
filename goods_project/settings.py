@@ -59,9 +59,9 @@ ROOT_URLCONF = 'goods_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # 'DIRS': [BASE_DIR, 'mainapp/templates/mainapp'],
+        'DIRS': [BASE_DIR, 'mainapp/templates/mainapp'],
         # 'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        'DIRS': [os.path.join(BASE_DIR, [re.findall('templates')])],
+        # 'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
