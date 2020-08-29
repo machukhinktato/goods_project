@@ -10,9 +10,12 @@
 <br>
 {{ phrase.title }}
 <br>
-{% for d in data %}
-{{ d.name }}
-{{ d.price }}
+{% csrf_token %}
+{% for field in form %}
+    <div class="form-group">
+        {{ field.name }}
+        {{ field.price }}
+    </div>
 {% endfor %}
 
 </body>
