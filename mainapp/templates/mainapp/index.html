@@ -20,21 +20,14 @@
 </head>
 <body>
 
-{{ greetings.upper }}
-<br>
-{{ phrase.title }}
-<br>
-
-<form action="{% url 'goods_url' %}" method="post">
-    {% csrf_token %}
-    {% for field in form %}
-        <div class="form-group">
-            {{ field.label }}
-            {{ field }}
-        </div>
-    {% endfor %}
-
-    <button type="submit" class="btn btn-primary">add goods</button>
-</form>
+{% for i in goods %}
+<div class="row">
+    {{ i.name }}
+    {{ i.price }}
+</div>
+{% endfor %}
+<button class='btn btn-primary' type="button">
+    Button
+</button>
 </body>
 </html>
