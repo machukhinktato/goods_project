@@ -19,14 +19,18 @@
     <title>Mike T</title>
 </head>
 <body>
-
+<div class="form-control col-lg-6">
 {% for i in goods %}
-<div class="row">
+<div class="form-control">
     {{ i.name }}
-    {{ i.price }}
+    {{ i.price }} руб.
 </div>
 {% endfor %}
-<button class='btn btn-primary' type="button" >{% url 'goods_add' %}
+<button class='btn btn-danger btn-round' type="button" >
+    <a href="{% url 'goods_add' %}">
+        <b style="color: white">Button</b>
+    </a>
 </button>
+</div>
 </body>
 </html>
