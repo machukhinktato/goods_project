@@ -19,16 +19,21 @@
     <title>Mike T</title>
 </head>
 <body>
-<div class="container col-lg-6 mt-5">
-{% for i in goods %}
-<div class="form-control">
-<tr>
-    <td>{{ i.name }}</td>
-    <td>{{ i.price }} руб.</td>
-</tr>
-</div>
-{% endfor %}
-<button class='btn btn-danger btn-round mt-2' type="button" >
+<div class="container col-6">
+    <table class="table">
+        <tr>
+            <th>Название</th>
+            <th>Цена</th>
+        </tr>
+        {% for i in goods %}
+            <tr>
+                <td>{{ i.name }}</td>
+                <td>{{ i.price }} руб.</td>
+            </tr>
+            </div>
+        {% endfor %}
+</table>
+<button class='btn btn-danger btn-round mt-2' type="button">
     <a href="{% url 'goods_add_url' %}">
         <b style="color: white">Button</b>
     </a>
