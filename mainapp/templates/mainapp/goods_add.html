@@ -21,14 +21,16 @@
 <body>
 {#<b>hello</b>#}
 {#{{ form }}#}
+<div class="container col-lg-6">
     {% for field in form %}
         <div class="row">
             {{ field.label }}
             {{ field }}
         </div>
     {% endfor %}
-<button class='btn btn-primary' type="submit">
-    {% url 'main' %}
-</button>
+    <button class='btn btn-primary' type="submit"> Submit
+    </button>
+</div>
+
 </body>
 </html>
