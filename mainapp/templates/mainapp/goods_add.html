@@ -19,15 +19,16 @@
     <title>Mike T</title>
 </head>
 <body>
-<b>hello</b>
-{#{% for field in form %}#}
-{#<div class="row">#}
-{#    {{ field.label }}#}
-{#    {{ field }}#}
-{#</div>#}
-{#{% endfor %}#}
-{#<button class='btn btn-primary' type="button">#}
-{#    Button#}
-{#</button>#}
+{#<b>hello</b>#}
+{#{{ form }}#}
+    {% for field in form %}
+        <div class="row">
+            {{ field.label }}
+            {{ field }}
+        </div>
+    {% endfor %}
+<button class='btn btn-primary' type="submit">
+    {% url 'main' %}
+</button>
 </body>
 </html>

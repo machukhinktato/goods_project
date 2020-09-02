@@ -4,13 +4,28 @@ from .models import GoodsItems
 from .forms import GoodsForm
 
 
-def goods_list(request):
-    goods = GoodsItems.objects.all()
-    return render(request, 'index.html', context={'goods': goods})
+class GoodsList(View):
+    model = GoodsItems
+    template = 'index.html'
+
+    def get(self, request):
+        goods = self.model.objects.all()
+        return render(
+            request,
+            self.template,
+            context={
+                self.model.__name__.lower(): goods,
+                'goods': goods,
+                'detail': True,
+            }
+        )
+# def goods_list(request):
+#     goods = GoodsItems.objects.all()
+#     return render(request, 'index.html', context={'goods': goods})
 
 
 class GoodsDetails(View):
-    model_form = GoodsItems
+    model_form = GoodsForm
     template = 'mainapp/goods_add.html'
 
     def get(self, request):
