@@ -21,15 +21,21 @@
 <body>
 {#<b>hello</b>#}
 {#{{ form }}#}
-<div class="container col-lg-6">
-    {% for field in form %}
-        <div class="row">
-            {{ field.label }}
-            {{ field }}
-        </div>
-    {% endfor %}
-    <button class='btn btn-primary' type="submit"> Submit
-    </button>
+<div class="container col-lg-6 mt-5">
+    <form action="{% url 'goods_add_url' %}" method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+                {{ field.label }}
+                {{ field }}
+            </div>
+        {% endfor %}
+        <button class='btn btn-primary mt-1' type="button">
+            <a style='color: white' href="{% url 'main' %}">Back</a>
+        </button>
+        <button class='btn btn-primary mt-1' type="submit">Submit
+        </button>
+    </form>
 </div>
 
 </body>

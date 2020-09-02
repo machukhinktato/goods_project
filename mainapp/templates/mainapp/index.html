@@ -19,7 +19,7 @@
     <title>Mike T</title>
 </head>
 <body>
-<div class="form-control col-lg-6">
+<div class="container col-lg-6 mt-5">
 {% for i in goods %}
 <div class="form-control">
     {{ i.name }}
@@ -27,7 +27,7 @@
 </div>
 {% endfor %}
 <button class='btn btn-danger btn-round' type="button" >
-    <a href="{% url 'goods_add' %}">
+    <a href="{% url 'goods_add_url' %}">
         <b style="color: white">Button</b>
     </a>
 </button>
