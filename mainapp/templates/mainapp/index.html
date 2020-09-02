@@ -22,11 +22,13 @@
 <div class="container col-lg-6 mt-5">
 {% for i in goods %}
 <div class="form-control">
-    {{ i.name }}
-    {{ i.price }} руб.
+<tr>
+    <td>{{ i.name }}</td>
+    <td>{{ i.price }} руб.</td>
+</tr>
 </div>
 {% endfor %}
-<button class='btn btn-danger btn-round' type="button" >
+<button class='btn btn-danger btn-round mt-2' type="button" >
     <a href="{% url 'goods_add_url' %}">
         <b style="color: white">Button</b>
     </a>
