@@ -22,11 +22,6 @@ class GoodsList(View):
         )
 
 
-# def goods_list(request):
-#     goods = GoodsItems.objects.all()
-#     return render(request, 'index.html', context={'goods': goods})
-
-
 class GoodsDetails(View):
     model_form = GoodsForm
     template = 'mainapp/goods_add.html'
@@ -40,7 +35,7 @@ class GoodsDetails(View):
             bound_form = self.model_form(request.POST)
         if bound_form.is_valid():
             bound_form.save()
-            return HttpResponseRedirect('/')  # return render(request, self.template, context={'form': form})
+            return HttpResponseRedirect('/')
         return render(
             request,
             self.template,

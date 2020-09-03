@@ -19,7 +19,6 @@ from mainapp import views as mainapp
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('', mainapp.goods_list),
     path('', mainapp.GoodsList.as_view(), name='main'),
-    path('add/', include('mainapp.urls')),
+    path('goods/', include('mainapp.urls')),
 ]
