@@ -23,7 +23,7 @@ class GoodsList(View):
         )
 
 
-class GoodsDetails(View):
+class GoodsDetails(GoodsList, View):
     model_form = GoodsForm
     template = 'mainapp/goods_add.html'
     data = {}
@@ -38,7 +38,7 @@ class GoodsDetails(View):
             if form.is_valid():
                 form.save()
                 data['valid'] = True
-                goods = GoodsItems.objects.all()
+                goods = self.model.objects.all()
                 data['goods_html'] = render_to_string(
                     'index.html', {'goods': goods})
             else:
@@ -47,7 +47,7 @@ class GoodsDetails(View):
         else:
             data['valid'] = False
             data['form_html'] = render_to_string(
-                'index.html', {'form': model_form()}, request=request)
+                'index.html', {'form': self.model_form()}, request=request)
 
         return JsonResponse(data)
 
