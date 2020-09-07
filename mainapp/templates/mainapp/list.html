@@ -1,10 +1,14 @@
-<tr>
-    <th>Название</th>
-    <th>Цена</th>
-</tr>
-{% for product in products %}
-<tr>
-    <td>{{ product.name }}</td>
-    <td>{{ product.price }}</td>
-</tr>
-{% endfor %}
+<div class="container col-lg-6 mt-5 col-lg-offset-2">
+        <table class="table">
+            <tr>
+                <th>Название</th>
+                <th>Цена</th>
+            </tr>
+            {% for product in goods %}
+                <tr>
+                    <td>{{ product.name|title }}</td>
+                    <td>{{ product.price }} руб.</td>
+                </tr>
+            {% endfor %}
+        </table>
+</div>

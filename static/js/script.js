@@ -8,8 +8,8 @@ $(function () {
         let modal = $(this).parents('.modal').first();
         let form = modal.find('form');
         $.post(form.attr('action'), form.serialize(), data => {
-            if (data.form_is_valid) {
-                $('table').html(data.products_html);
+            if (data.correct) {
+                $('table').html(data.goods_html);
                 modal.modal('toggle');
             }
             else {
