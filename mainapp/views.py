@@ -25,6 +25,7 @@ class GoodsList(View):
 class GoodsDetails(View):
     model_form = GoodsForm
     template = 'mainapp/goods_add.html'
+    dict = {}
 
     def get(self, request):
         form = self.model_form
