@@ -1,25 +1,50 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
-
+{##}
+{#{% block content %}#}
+{#<div class="container col-lg-6 mt-5">#}
+{#        <table class="table">#}
+{#            <tr>#}
+{#                <th>Название</th>#}
+{#                <th>Цена</th>#}
+{#            </tr>#}
+{#            {% for product in goods %}#}
+{#                <tr>#}
+{#                    <td>{{ product.name|title }}</td>#}
+{#                    <td>{{ product.price }} руб.</td>#}
+{#                </tr>#}
+{#            {% endfor %}#}
+{#        </table>#}
+{#        <button class='btn btn-danger btn-round mt-2' type="button">#}
+{#            <a href="{% url 'goods_add_url' %}" style="color: white; text-decoration: None">#}
+{#                Добавить товар#}
+{#            </a>#}
+{#        </button>#}
+{#</div>#}
+{##}
+{#{% endblock %}#}
 {% block content %}
-<div class="container col-lg-6 mt-5">
-        <table class="table">
-            <tr>
-                <th>Название</th>
-                <th>Цена</th>
-            </tr>
-            {% for product in goods %}
-                <tr>
-                    <td>{{ product.name|title }}</td>
-                    <td>{{ product.price }} руб.</td>
-                </tr>
-            {% endfor %}
-        </table>
-        <button class='btn btn-danger btn-round mt-2' type="button">
-            <a href="{% url 'goods_add_url' %}" style="color: white; text-decoration: None">
-                Добавить товар
-            </a>
-        </button>
-</div>
-
+    <table class="table">
+        {% include "mainapp/list.html" %}
+    </table>
+    <button type="button btn-success" class="btn btn-primary" data-toggle="modal" data-target="#modal">Добавить</button>
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="label" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="label">Добавить продукт</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{% url 'goods_add_url' %}" method="post" enctype="multipart/form-data">{% include 'mainapp/goods_add.html' %}</form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                    <button type="button" class="btn btn-primary" id="add-button">Добавить</button>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
