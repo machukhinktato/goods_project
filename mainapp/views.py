@@ -62,8 +62,7 @@ from django.http import HttpResponseRedirect
                                         #         'form': bound_form
                                         #     }
                                         # )
-
-
+# try to show my best
 
 def GoodsList(request):
     return render(request, 'mainapp/index.html', {'goods': GoodsItems.objects.all()})
