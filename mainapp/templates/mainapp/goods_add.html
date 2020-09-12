@@ -1,16 +1,16 @@
 {#{% extends 'mainapp/base.html' %}#}
 
 
-{#{% block content %}#}
-{% csrf_token %}
-{{ form.as_p }}
-{#{% endblock %}#}
+{% block content %}
+    {% csrf_token %}
+    {{ form.as_p }}
+{% endblock %}
 
 
 {#{% block content %}#}
 {##}
 {#    <div class="container col-lg-6 mt-5">#}
-{#        <form action="{% url 'goods_add_url' %}" method="POST">#}
+{#        <form action="{% url '' %}" method="POST">#}
 {#            {% csrf_token %}#}
 {#            {% for field in form %}#}
 {#                <div class="form-group">#}
