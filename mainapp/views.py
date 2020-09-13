@@ -7,69 +7,71 @@ from .forms import GoodsForm
 from django.http import HttpResponseRedirect
 
 
-class GoodsList:
+class GoodsList(View):
     model = GoodsItems
-    template = 'index.html'
+    template = 'mainapp/index.html'
 
-    def get(self, request):
-        goods = self.model.objects.all()
+    @staticmethod
+    def get(request):
+        goods = model.objects.all()
         return render(
             request,
-            self.template,
+            template,
             context={
-                self.model.__name__.lower(): goods,
+                model.__name__.lower(): goods,
                 'goods': goods,
                 'detail': True,
             }
         )
 
 
-# class GoodsDetails(View):
-#     model_form = GoodsForm
-#     template = 'mainapp/goods_add.html'
-#     data = {}
-#
-#     def get(self, request):
-#         form = GoodsForm()
-#         return render(request, self.template, context={'form': form})
-#
-#     @staticmethod
-#     def post(request):
-#         if request.method == 'POST':
-#             form = GoodsForm(request.POST)
-#             if form.is_valid():
-#                 form.save()
-#                 data['correct'] = True
-#                 goods = GoodsItems.objects.all()
-#                 data['goods_html'] = render_to_string('mainapp/list.html', {'goods': goods})
-#             else:
-#                 data['form_html'] = render_to_string('mainapp/goods_add.html', {'form': form}, request=request)
-#
-#         else:
-#             data['correct'] = False
-#             data['form_html'] = render_to_string('mainapp/goods_add.html', {'form': GoodsForm()}, request=request)
-#
-#         return JsonResponse(data)
-#
-#
+class GoodsDetails(View):
+    model_form = GoodsForm()
+    template = 'mainapp/goods_add.html'
+    data = dict()
+
+    @staticmethod
+    def get(request):
+        form = model_form
+        return render(request, 'mainapp/index.html', context={'form': form})
+
+    @staticmethod
+    def post(request):
+        if request.method == 'POST':
+            form = GoodsForm(request.POST)
+            if form.is_valid():
+                form.save()
+                data['correct'] = True
+                goods = GoodsItems.objects.all()
+                data['goods_html'] = render_to_string('mainapp/list.html', {'goods': goods})
+            else:
+                data['form_html'] = render_to_string('mainapp/goods_add.html', {'form': form}, request=request)
+
+        else:
+            data['correct'] = False
+            data['form_html'] = render_to_string('mainapp/goods_add.html', {'form': model_form}, request=request)
+
+        return JsonResponse(data)
+
+
 # def GoodsList(request):
 #     return render(request, 'mainapp/index.html', {'goods': GoodsItems.objects.all()})
-
-
-def GoodsDetails(request):
-    data = dict()
-    if request.method == 'POST':
-        form = GoodsForm(request.POST)
-        if form.is_valid():
-            form.save()
-            data['correct'] = True
-            goods = GoodsItems.objects.all()
-            data['goods_html'] = render_to_string('mainapp/list.html', {'goods': goods})
-        else:
-            data['form_html'] = render_to_string('mainapp/goods_add.html', {'form': form}, request=request)
-
-    else:
-        data['correct'] = False
-        data['form_html'] = render_to_string('mainapp/goods_add.html', {'form': GoodsForm()}, request=request)
-
-    return JsonResponse(data)
+#
+#
+# def GoodsDetails(request):
+#     data = dict()
+#     if request.method == 'POST':
+#         form = GoodsForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             data['correct'] = True
+#             goods = GoodsItems.objects.all()
+#             data['goods_html'] = render_to_string('mainapp/list.html', {'goods': goods})
+#         else:
+#             data['form_html'] = render_to_string('mainapp/goods_add.html', {'form': form}, request=request)
+#
+#     else:
+#         data['correct'] = False
+#         data['form_html'] = render_to_string('mainapp/goods_add.html', {'form': GoodsForm()}, request=request)
+#
+#     return JsonResponse(data)
